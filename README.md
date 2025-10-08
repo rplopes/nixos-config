@@ -10,12 +10,17 @@ First, clone the repo:
 $ git clone git@github.com:rplopes/nixos-config.git ~/.nixos-config
 ```
 
-Then, replace the existing NixOS configuration file with a symlink to the repo's version:
+Copy the hardware configuration to the repo, overwriting the repo's version:
 
 ```sh
-$ cd /etc/nixos
-$ sudo rm configuration.nix
-$ sudo ln ~/.nixos-config/configuration.nix .
+$ cp /etc/nixos/hardware-configuration.nix ~/.nixos-config
+```
+
+Then, replace the existing NixOS configuration directory with a symlink to this repo:
+
+```sh
+$ sudo mv /etc/nixos /etc/nixos.backup
+$ sudo ln -s ~/.nixos-config /etc/nixos
 ```
 
 Finally, don't forget to apply the changes:

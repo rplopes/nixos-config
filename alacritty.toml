@@ -1,0 +1,14 @@
+[general]
+import = [
+	"~/.config/alacritty/themes/themes/gruvbox_dark.toml"
+]
+
+[window]
+padding = { x = 3, y = 3 }
+dynamic_padding = true
+
+[font]
+size = 10
+
+[terminal]
+shell = "zsh"

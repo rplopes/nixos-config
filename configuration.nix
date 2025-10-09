@@ -143,6 +143,10 @@
   environment = {
     pathsToLink = [ "/libexec" ];
     shells = with pkgs; [zsh];
+    sessionVariables = {
+      EDITOR = "vim";
+      TERMINAL = "alacritty";
+    };
 
     # List packages installed in system profile. To search, run:
     # $ nix search wget

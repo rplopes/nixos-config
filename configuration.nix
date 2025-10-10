@@ -90,6 +90,7 @@
       xkb =  {
         layout = "pt,us";
         variant = "mac,";
+        options = "grp:shifts_toggle";
       };
     };
   };

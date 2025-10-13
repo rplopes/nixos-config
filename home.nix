@@ -19,6 +19,19 @@
     executable = true;
   };
 
+  dconf.enable = false;
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Gruvbox-Dark";
+      package = pkgs.gruvbox-gtk-theme;
+    };
+    iconTheme = {
+      name = "Gruvbox-Plus-Dark";
+      package = pkgs.gruvbox-plus-icons;
+    };
+  };
+
   programs.git = {
     enable = true;
     userName = "Ricardo Lopes";

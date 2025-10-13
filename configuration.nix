@@ -144,9 +144,13 @@
   environment = {
     pathsToLink = [ "/libexec" ];
     shells = with pkgs; [zsh];
-    sessionVariables = {
+    variables = {
       EDITOR = "vim";
+      GTK_THEME = "Gruvbox-Dark";
+      ICON_THEME = "Gruvbox-Plus-Dark";
       TERMINAL = "alacritty";
+      XCURSOR_THEME = "Bibata-Modern-Ice";
+      XCURSOR_SIZE = "24";
     };
 
     # List packages installed in system profile. To search, run:
@@ -155,11 +159,12 @@
       alacritty
       alsa-utils
       bat
+      bibata-cursors
       feh
       fzf
       git
-      (pkgs.gruvbox-gtk-theme.override {
-        colorVariants = [ "dark" "light" ];
+      (gruvbox-gtk-theme.override {
+        colorVariants = [ "dark" ];
         tweakVariants = [ "medium" ];
         themeVariants = [ "default" ];
       })

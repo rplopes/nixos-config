@@ -170,7 +170,7 @@ bindsym $mod+r mode "resize"
 exec_always feh --bg-fill /home/$USER/.background-image
 
 # Color scheme
-set $bg #282828
+set $bg #1d2021
 set $fg #ebdbb2
 set $red #cc241d
 set $yellow #d79921

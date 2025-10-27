@@ -154,7 +154,6 @@
       GTK_THEME = "Gruvbox-Dark";
       ICON_THEME = "Gruvbox-Plus-Dark";
       TERMINAL = "alacritty";
-      XCURSOR_THEME = "Bibata-Modern-Ice";
       XCURSOR_SIZE = "24";
     };
 
@@ -164,7 +163,6 @@
       alacritty
       alsa-utils
       bat
-      bibata-cursors
       feh
       fzf
       git

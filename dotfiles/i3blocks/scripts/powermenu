@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Simple rofi power menu
+# Depends on rofi, systemctl, and optionally i3lock
+
+rofi_theme="$HOME/.config/rofi/powermenu.rasi"
+
+
+if [ "$BLOCK_BUTTON" = "1" ]; then
+    chosen=$(echo -e " Lock\n Suspend\n Reboot\n Power Off" | rofi -dmenu -i -p "Power Menu" -theme "$rofi_theme")
+
+    case "$chosen" in
+        " Lock") i3lock -k ;;
+        " Suspend") systemctl suspend ;;
+        " Reboot") systemctl reboot ;;
+        " Power Off") systemctl poweroff ;;
+    esac
+fi
+
+echo ""

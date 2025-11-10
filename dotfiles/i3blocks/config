@@ -78,6 +78,12 @@ DATEFMT=+%H:%M %Y-%m-%d
 HEIGHT=180
 WIDTH=280
 
+# Power menu
+[powermenu]
+label= 
+interval=once
+signal=1
+
 # Generic media player support
 #
 # This displays "ARTIST - SONG" if a music is playing.

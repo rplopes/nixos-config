@@ -18,8 +18,10 @@
     recursive = true;
     executable = true;
   };
-  home.file.".config/rofi/config.rasi".source = ./dotfiles/rofi/config.rasi;
-  home.file.".config/rofi/theme.rasi".source = ./dotfiles/rofi/theme.rasi;
+  home.file.".config/rofi" = {
+    source = ./dotfiles/rofi;
+    recursive = true;
+  };
 
   dconf.enable = false;
   gtk = {

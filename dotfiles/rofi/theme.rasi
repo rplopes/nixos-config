@@ -1,12 +1,14 @@
 configuration {
     show-icons:                 true;
     display-combi:              "";
+    display-drun:               " ";
     drun-display-format:        "{name}";
 }
 
 * {
+    font:           "Hack Nerd Font 11";
     background:     #1d2021FF;
-    border: #d79921FF;
+    border:         #d79921FF;
     foreground:     #EBDBB2FF;
 }
 
@@ -42,7 +44,7 @@ entry {
     background-color:            inherit;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Search...";
+    placeholder:                 "";
     placeholder-color:           inherit;
 }
 
@@ -99,11 +101,4 @@ error-message {
     border-color:                @foreground;
     background-color:            @background;
     text-color:                  @foreground;
-}
-textbox {
-    background-color:            @background;
-    text-color:                  @foreground;
-    vertical-align:              0.5;
-    horizontal-align:            0.0;
-    highlight:                   none;
 }

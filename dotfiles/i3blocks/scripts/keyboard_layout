@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-echo $(xkblayout-state print %s | awk '{print toupper($0)}')

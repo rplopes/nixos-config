@@ -12,14 +12,12 @@
   ];
 
   home.file.".config/i3/config".source = ./dotfiles/i3/config;
-  home.file.".config/i3blocks/config".source = ./dotfiles/i3blocks/config;
-  home.file.".config/i3blocks/scripts" = {
-    source = ./dotfiles/i3blocks/scripts;
-    recursive = true;
-    executable = true;
-  };
   home.file.".config/rofi" = {
     source = ./dotfiles/rofi;
+    recursive = true;
+  };
+  home.file.".config/polybar" = {
+    source = ./dotfiles/polybar;
     recursive = true;
   };
 

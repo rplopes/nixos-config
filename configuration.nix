@@ -10,7 +10,11 @@
       ./hardware-configuration.nix
     ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    max-jobs = "auto";
+    cores = 0;
+  };
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -87,9 +91,7 @@
         enable = true;
         extraPackages = with pkgs; [
           i3lock
-          i3status
-          i3blocks
-       ];
+        ];
       };
 
       xkb =  {
@@ -104,6 +106,8 @@
   console.keyMap = "pt-latin1";
 
   security.rtkit.enable = true;
+
+  systemd.services.accounts-daemon.enable = false;
 
   users = {
     defaultUserShell = pkgs.zsh;
@@ -178,11 +182,13 @@
       rofi
       vim
       wget
-      xdotool # for i3blocks
       xfce.thunar-volman
       xfce.tumbler
-      xkblayout-state
-      yad # for i3blocks
+      gxkb
+      networkmanagerapplet
+      pavucontrol
+      (polybar.override { i3Support = true; })
+      volumeicon
     ];
   };
 

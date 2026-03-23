@@ -6,6 +6,10 @@ configuration {
   window-thumbnail: true;
   combi-hide-mode-prefix: true;
   kb-cancel: "Escape,Control+g,Control+bracketleft,Super+space";
+  kb-accept-entry: "Return,KP_Enter,ctrl+j";
+  hover-select: true;
+  me-select-entry: "";
+  me-accept-entry: "MousePrimary";
   timeout {
       action: "kb-cancel";
       delay:  0;

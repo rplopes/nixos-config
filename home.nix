@@ -11,6 +11,12 @@
     fzf # A command-line fuzzy finder
   ];
 
+  # Hide unwanted apps from rofi launcher
+  xdg.desktopEntries.gxkb = {
+    name = "gxkb";
+    noDisplay = true;
+  };
+
   home.file.".config/i3/config".source = ./dotfiles/i3/config;
   home.file.".config/rofi" = {
     source = ./dotfiles/rofi;

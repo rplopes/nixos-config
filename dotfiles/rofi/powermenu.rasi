@@ -1,0 +1,67 @@
+configuration {
+    show-icons: false;
+}
+
+* {
+    font:        "Hack Nerd Font 22";
+    background:  #1d2021FF;
+    foreground:  #ebdbb2FF;
+    border-col:  #d79921FF;
+    selected-bg: #3c3836FF;
+    selected-fg: #d79921FF;
+}
+
+window {
+    width:            400px;
+    border:           3px solid;
+    border-color:     @border-col;
+    background-color: @background;
+}
+
+mainbox {
+    spacing:          0px;
+    background-color: transparent;
+    children:         [ "inputbar", "listview" ];
+}
+
+inputbar {
+    padding:          12px 15px;
+    border:           0px 0px 3px 0px;
+    border-color:     @border-col;
+    background-color: @background;
+    text-color:       @foreground;
+    children:         [ "prompt" ];
+}
+
+prompt {
+    background-color: inherit;
+    text-color:       inherit;
+    font:             "DejaVu Sans Mono 10";
+}
+
+listview {
+    columns:          5;
+    lines:            1;
+    fixed-columns:    true;
+    background-color: transparent;
+    spacing:          0px;
+}
+
+element {
+    padding:          20px 10px;
+    background-color: transparent;
+    text-color:       @foreground;
+    cursor:           pointer;
+}
+
+element selected {
+    background-color: @selected-bg;
+    text-color:       @selected-fg;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+}

@@ -177,7 +177,7 @@ client.focused_inactive $bg $bg $fg $bg
 client.urgent $red $red $fg $red
 
 # Panel
-exec --no-startup-id polybar
+exec_always --no-startup-id sh -c "pkill polybar; while pgrep -x polybar >/dev/null; do sleep 0.1; done; polybar main"
 
 gaps inner 3
 default_border pixel 3

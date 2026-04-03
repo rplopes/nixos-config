@@ -131,8 +131,6 @@
   programs = {
     i3lock.enable = true; #default i3 screen locker
 
-    firefox.enable = true;
-
     thunar = {
       enable = true;
       plugins = with pkgs.xfce; [
@@ -140,19 +138,7 @@
       ];
     };
 
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      enableBashCompletion = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-      histSize = 99999;
-      ohMyZsh = {
-        enable = true;
-        plugins = ["fzf" "git"];
-        theme = "fwalch";
-      };
-    };
+    zsh.enable = true;
   };
 
   # Allow unfree packages
@@ -162,40 +148,15 @@
   environment = {
     pathsToLink = [ "/libexec" ];
     shells = with pkgs; [zsh];
-    variables = {
-      EDITOR = "vim";
-      TERMINAL = "alacritty";
-      XCURSOR_SIZE = "24";
-    };
 
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     systemPackages = with pkgs; [
-      alacritty
       alsa-utils
-      bat
       pkgs-unstable.claude-code
-      feh
-      fzf
-      git
-      (gruvbox-gtk-theme.override {
-        colorVariants = [ "dark" "light" ];
-        tweakVariants = [ "medium" ];
-        themeVariants = [ "default" ];
-      })
-      gruvbox-plus-icons
-      lxappearance
       dconf
-      oh-my-zsh
-      rofi
-      vim
-      wget
       xfce.thunar-volman
       xfce.tumbler
-      gxkb
-      networkmanagerapplet
-      (polybar.override { i3Support = true; })
-      xsettingsd
     ];
   };
 

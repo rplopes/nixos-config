@@ -4,11 +4,33 @@
   home.username = "ricardo";
   home.homeDirectory = "/home/ricardo";
 
+  home.sessionVariables = {
+    EDITOR = "vim";
+    TERMINAL = "alacritty";
+    XCURSOR_SIZE = "24";
+  };
+
   home.packages = with pkgs; [
-    ripgrep # recursively searches directories for a regex pattern
-    jq # A lightweight and flexible command-line JSON processor
-    eza # A modern replacement for ‘ls’
-    fzf # A command-line fuzzy finder
+    bat
+    eza
+    feh
+    fzf
+    gxkb
+    (gruvbox-gtk-theme.override {
+      colorVariants = [ "dark" "light" ];
+      tweakVariants = [ "medium" ];
+      themeVariants = [ "default" ];
+    })
+    gruvbox-plus-icons
+    jq
+    lxappearance
+    networkmanagerapplet
+    (polybar.override { i3Support = true; })
+    ripgrep
+    rofi
+    vim
+    wget
+    xsettingsd
   ];
 
   # Hide unwanted apps from rofi launcher
@@ -77,6 +99,8 @@ GEOF
 
   dconf.enable = true;
 
+  programs.firefox.enable = true;
+
   programs.git = {
     enable = true;
     userName = "Ricardo Lopes";
@@ -107,11 +131,12 @@ GEOF
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    #autosuggestions.enable = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    history.size = 99999;
     oh-my-zsh = {
       enable = true;
-      plugins = ["git"];
+      plugins = ["fzf" "git"];
       theme = "fwalch";
     };
   };

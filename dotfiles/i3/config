@@ -167,6 +167,9 @@ exec_always feh --bg-fill /home/$USER/.background-image
 # Set default cursor on root window
 exec_always xsetroot -cursor_name left_ptr
 
+# XSettings daemon for live GTK theme switching
+exec --no-startup-id xsettingsd
+
 # Color scheme
 set $bg #1d2021
 set $fg #ebdbb2

@@ -2,13 +2,15 @@ configuration {
     show-icons: false;
 }
 
+@import "~/.config/theme/active/colors.rasi"
+
 * {
     font:        "Hack Nerd Font 22";
-    background:  #1d2021FF;
-    foreground:  #ebdbb2FF;
-    border-col:  #d79921FF;
-    selected-bg: #3c3836FF;
-    selected-fg: #d79921FF;
+    background:  @theme-bg;
+    foreground:  @theme-fg;
+    border-col:  @theme-border;
+    selected-bg: @theme-bg-hl;
+    selected-fg: @theme-selected-fg;
 }
 
 window {

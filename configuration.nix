@@ -102,6 +102,15 @@
     };
   };
 
+  # Portal for dark/light theme detection (used by Firefox)
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+  };
+
+  programs.dconf.enable = true;
+
   # Configure console keymap
   console.keyMap = "pt-latin1";
 
@@ -155,8 +164,6 @@
     shells = with pkgs; [zsh];
     variables = {
       EDITOR = "vim";
-      GTK_THEME = "Gruvbox-Dark";
-      ICON_THEME = "Gruvbox-Plus-Dark";
       TERMINAL = "alacritty";
       XCURSOR_SIZE = "24";
     };
@@ -172,12 +179,13 @@
       fzf
       git
       (gruvbox-gtk-theme.override {
-        colorVariants = [ "dark" ];
+        colorVariants = [ "dark" "light" ];
         tweakVariants = [ "medium" ];
         themeVariants = [ "default" ];
       })
       gruvbox-plus-icons
       lxappearance
+      dconf
       oh-my-zsh
       rofi
       vim
@@ -187,6 +195,7 @@
       gxkb
       networkmanagerapplet
       (polybar.override { i3Support = true; })
+      xsettingsd
     ];
   };
 

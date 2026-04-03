@@ -2,14 +2,16 @@ configuration {
     show-icons: false;
 }
 
+@import "~/.config/theme/active/colors.rasi"
+
 * {
     font:        "DejaVu Sans Mono 11";
-    background:  #1d2021FF;
-    foreground:  #ebdbb2FF;
-    border-col:  #d79921FF;
-    selected-bg: #d79921FF;
-    on:          #98971aFF;
-    off:         #458588FF;
+    background:  @theme-bg;
+    foreground:  @theme-fg;
+    border-col:  @theme-border;
+    selected-bg: @theme-border;
+    on:          @theme-green;
+    off:         @theme-blue;
 }
 
 window {

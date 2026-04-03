@@ -5,11 +5,13 @@ configuration {
     drun-display-format:        "{name}";
 }
 
+@import "~/.config/theme/active/colors.rasi"
+
 * {
     font:           "Hack Nerd Font 11";
-    background:     #1d2021FF;
-    border:         #d79921FF;
-    foreground:     #EBDBB2FF;
+    background:     @theme-bg;
+    border:         @theme-border;
+    foreground:     @theme-fg;
 }
 
 window {

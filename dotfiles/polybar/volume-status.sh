@@ -8,9 +8,10 @@ MUTED=$(echo "$OUTPUT" | grep -c "MUTED")
 VOL=$(echo "$OUTPUT" | grep -oP '[\d.]+' | head -1)
 VOL_PCT=$(echo "$VOL" | awk '{printf "%3d", $1 * 100}')
 
-BG_HL="#3c3836"
-GREEN="#98971a"
-RED="#cc241d"
+source "$HOME/.config/theme/active/colors.sh"
+BG_HL="$THEME_BG_HL"
+GREEN="$THEME_GREEN"
+RED="$THEME_RED"
 
 if [ "$MUTED" -eq 1 ]; then
   echo "%{B${BG_HL}}%{u${RED}}%{+u} %{T2}${ICON_MUTED} %{T-}  0% %{-u}%{B-}"

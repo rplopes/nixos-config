@@ -1,0 +1,10 @@
+* {
+    theme-bg:          #fbf1c7FF;
+    theme-bg-hl:       #d5c4a1FF;
+    theme-fg:          #3c3836FF;
+    theme-border:      #b57614FF;
+    theme-selected-fg: #b57614FF;
+    theme-green:       #79740eFF;
+    theme-red:         #9d0006FF;
+    theme-blue:        #076678FF;
+}

@@ -17,7 +17,6 @@
     noDisplay = true;
   };
 
-  home.file.".config/i3/config".source = ./dotfiles/i3/config;
   home.file.".config/rofi" = {
     source = ./dotfiles/rofi;
     recursive = true;
@@ -26,19 +25,57 @@
     source = ./dotfiles/polybar;
     recursive = true;
   };
-
-  dconf.enable = false;
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Gruvbox-Dark";
-      package = pkgs.gruvbox-gtk-theme;
-    };
-    iconTheme = {
-      name = "Gruvbox-Plus-Dark";
-      package = pkgs.gruvbox-plus-icons;
-    };
+  home.file.".config/theme/gruvbox-dark" = {
+    source = ./dotfiles/themes/gruvbox-dark;
+    recursive = true;
   };
+  home.file.".config/theme/gruvbox-light" = {
+    source = ./dotfiles/themes/gruvbox-light;
+    recursive = true;
+  };
+  home.file.".config/theme/theme-toggle.sh" = {
+    source = ./dotfiles/themes/theme-toggle.sh;
+    executable = true;
+  };
+
+  # i3 config needs to be mutable for theme switching (sed on color vars)
+  home.activation.i3config = config.lib.dag.entryAfter ["writeBoundary"] ''
+    src="${./dotfiles/i3/config}"
+    dst="$HOME/.config/i3/config"
+    mkdir -p "$(dirname "$dst")"
+    if [ ! -f "$dst" ] || [ -L "$dst" ]; then
+      cp "$src" "$dst"
+      chmod 644 "$dst"
+    fi
+  '';
+
+  # Create initial mutable configs for theme switching (survives rebuilds)
+  home.activation.themeSetup = config.lib.dag.entryAfter ["writeBoundary"] ''
+    if [ ! -L "$HOME/.config/theme/active" ]; then
+      ln -sfn "$HOME/.config/theme/gruvbox-dark" "$HOME/.config/theme/active"
+    fi
+    if [ ! -f "$HOME/.xsettingsd" ]; then
+      cat > "$HOME/.xsettingsd" << 'XEOF'
+Net/ThemeName "Gruvbox-Dark-Medium"
+Net/IconThemeName "Gruvbox-Plus-Dark"
+Gtk/ApplicationPreferDarkTheme 1
+XEOF
+    fi
+    for dir in "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"; do
+      mkdir -p "$dir"
+      if [ ! -f "$dir/settings.ini" ] || [ -L "$dir/settings.ini" ]; then
+        rm -f "$dir/settings.ini"
+        cat > "$dir/settings.ini" << 'GEOF'
+[Settings]
+gtk-icon-theme-name=Gruvbox-Plus-Dark
+gtk-theme-name=Gruvbox-Dark-Medium
+gtk-application-prefer-dark-theme=1
+GEOF
+      fi
+    done
+  '';
+
+  dconf.enable = true;
 
   programs.git = {
     enable = true;
@@ -50,22 +87,7 @@
     enable = true;
     settings = {
       env.TERM = "xterm-256color";
-      colors = {
-        primary = {
-          background = "#1d2021";
-          foreground = "#ebdbb2";
-        };
-        normal = {
-          black   = "#282828";
-          red     = "#cc241d";
-          green   = "#98971a";
-          yellow  = "#d79921";
-          blue    = "#458588";
-          magenta = "#b16286";
-          cyan    = "#689d6a";
-          white   = "#a89984";
-        };
-      };
+      general.import = [ "~/.config/theme/active/alacritty-colors.toml" ];
       font = {
         size = 10;
       };
